@@ -217,7 +217,7 @@ public class PushTest {
 
         for (String branchName : BRANCH_NAMES) {
             /* Add a file with random content to the current branch of working repo */
-            File added = File.createTempFile("added-", ".txt", cloneRepo);
+            File added = Files.createTempFile(cloneRepo.toPath(), "added-", ".txt").toFile();
             String randomContent = java.util.UUID.randomUUID().toString();
             String addedContent = "Initial commit to branch " + branchName + " content '" + randomContent + "'";
             Files.writeString(added.toPath(), addedContent, StandardCharsets.UTF_8);
@@ -266,7 +266,7 @@ public class PushTest {
 
     private ObjectId commitFileToCurrentBranch() throws InterruptedException, GitException, IOException {
         /* Add a file with random content to the current branch of working repo */
-        File added = File.createTempFile("added-", ".txt", workingRepo);
+        File added = Files.createTempFile(workingRepo.toPath(), "added-", ".txt").toFile();
         String randomContent = java.util.UUID.randomUUID().toString();
         String addedContent = "Push test " + randomContent;
         Files.writeString(added.toPath(), addedContent, StandardCharsets.UTF_8);

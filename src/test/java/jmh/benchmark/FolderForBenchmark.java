@@ -55,7 +55,7 @@ public class FolderForBenchmark {
      * Returns a new fresh file with a random name under the temporary folder.
      */
     public File newFile() throws IOException {
-        return File.createTempFile("junit", null, getRoot());
+        return Files.createTempFile(getRoot().toPath(), "junit", null).toFile();
     }
 
     /**

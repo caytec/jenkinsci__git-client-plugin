@@ -2692,11 +2692,11 @@ public class GitClientTest {
         assertSubmoduleContents("firewall", "ntp", "sshkeys");
 
         final File firewallDir = new File(repoRoot, "modules/firewall");
-        final File firewallFile = File.createTempFile("untracked-", ".txt", firewallDir);
+        final File firewallFile = Files.createTempFile(firewallDir.toPath(), "untracked-", ".txt").toFile();
         final File ntpDir = new File(repoRoot, "modules/ntp");
-        final File ntpFile = File.createTempFile("untracked-", ".txt", ntpDir);
+        final File ntpFile = Files.createTempFile(ntpDir.toPath(), "untracked-", ".txt").toFile();
         final File sshkeysDir = new File(repoRoot, "modules/sshkeys");
-        final File sshkeysFile = File.createTempFile("untracked-", ".txt", sshkeysDir);
+        final File sshkeysFile = Files.createTempFile(sshkeysDir.toPath(), "untracked-", ".txt").toFile();
 
         assertStatusUntrackedContent(gitClient, true);
 
